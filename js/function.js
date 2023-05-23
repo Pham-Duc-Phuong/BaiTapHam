@@ -5,13 +5,15 @@ function CalcGradeArea(Area) {
     if (Area === "A") return 2;
     if (Area === "B") return 1;
     if (Area === "C") return 0.5;
-    return 0;
+    if (Area === "X") return 0;
+    return 3;
 };
 function CalcGradeType(Type) {
     if (Type === "1") return 2.5;
     if (Type === "2") return 1.5;
     if (Type === "3") return 1;
-    return 0;
+    if (Type === "X") return 0;
+    return 3;
 };
 function calcTotal() {
     var Grade1 = +document.getElementById("SubjectGrade1").value;
@@ -26,6 +28,15 @@ function calcTotal() {
     var total = Grade1 + Grade2 + Grade3 + Gradearea + Gradetype;
     if (total >= benchmark && Grade1 !== 0 && Grade2 !== 0 && Grade3 !== 0) {
         notification.innerHTML = "Thông báo: " + "Chúc Mừng Bạn Đã Đậu";
+    } else if(Gradearea === 3 && Gradetype === 3){
+        alert("!!!Vui lòng chọn khu vực và đối tượng!!!");
+        return;
+    } else if(Gradearea === 3){
+        alert("!!!Vui lòng chọn khu !!!");
+        return;
+    } else if(Gradetype === 3){
+        alert("!!!Vui lòng chọn đối tượng!!!");
+        return;
     } else {
         notification.innerHTML = "Thông báo: " + "Chúc Mừng Bạn Đã Tạch";
     }
